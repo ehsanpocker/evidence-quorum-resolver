@@ -1,8 +1,12 @@
+Exit code: 0
+Wall time: 1.3 seconds
+Output:
 # { "Depends": "py-genlayer:1jb45aa8ynh2a9c9xn3b7qqh8sm5q93hwfp7jqmwsfhh8jpz09h6" }
 
 """Reusable multi-source claim resolver for GenLayer."""
 
 from genlayer import *
+from dataclasses import dataclass
 import json
 
 
@@ -175,3 +179,4 @@ EVIDENCE_JSON: {json.dumps(evidence, sort_keys=True)}
     @gl.public.view
     def get_count(self) -> u256:
         return self.next_id - u256(1)
+
