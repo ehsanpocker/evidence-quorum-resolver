@@ -95,7 +95,7 @@ CRITERIA: {criteria}
 EVIDENCE_JSON: {json.dumps(evidence, sort_keys=True)}
 """
             raw = gl.nondet.exec_prompt(prompt)
-            data = json.loads(raw)
+            data = raw if isinstance(raw, dict) else json.loads(raw)
             outcome = str(data.get("outcome", "INCONCLUSIVE")).upper()
             if outcome not in ("SUPPORTED", "CONTRADICTED", "INCONCLUSIVE"):
                 outcome = "INCONCLUSIVE"
