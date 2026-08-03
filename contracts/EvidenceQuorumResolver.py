@@ -3,6 +3,7 @@
 """Reusable multi-source claim resolver for GenLayer."""
 
 from genlayer import *
+from dataclasses import dataclass
 import json
 
 
@@ -94,7 +95,7 @@ CRITERIA: {criteria}
 EVIDENCE_JSON: {json.dumps(evidence, sort_keys=True)}
 """
             raw = gl.nondet.exec_prompt(prompt)
-            data = json.loads(raw)
+            data = raw if isinstance(raw, dict) else json.loads(raw)
             outcome = str(data.get("outcome", "INCONCLUSIVE")).upper()
             if outcome not in ("SUPPORTED", "CONTRADICTED", "INCONCLUSIVE"):
                 outcome = "INCONCLUSIVE"
@@ -175,3 +176,4 @@ EVIDENCE_JSON: {json.dumps(evidence, sort_keys=True)}
     @gl.public.view
     def get_count(self) -> u256:
         return self.next_id - u256(1)
+
