@@ -1,0 +1,14 @@
+[
+  {
+    "name": "software release",
+    "claim": "Project Alpha released version 1.0 before 2026-07-01.",
+    "criteria": "SUPPORTED only when two independent authoritative sources identify version 1.0 and a release date earlier than 2026-07-01.",
+    "sources": ["https://project.example/releases", "https://github.com/example/project/releases"]
+  },
+  {
+    "name": "flight delay",
+    "claim": "Flight XX123 arrived more than 180 minutes late on 2026-06-01.",
+    "criteria": "Compare scheduled and actual arrival timestamps; require two independent sources and a delay strictly greater than 180 minutes.",
+    "sources": ["https://airline.example/status/XX123", "https://airport.example/arrivals"]
+  }
+]
